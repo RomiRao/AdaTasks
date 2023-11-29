@@ -1,14 +1,20 @@
 import './App.css'
-import { Container } from '@mui/material'
+import { Container, Grid } from '@mui/material'
 import FormsContainer from './components/forms/formsContainer'
 import TasksContainer from './components/task-list/tasksContainer'
 
 function App() {
 
   return (
-    <Container>
-      <FormsContainer />
-      <TasksContainer />
+    <Container >
+      <Grid container>
+        <Grid item xs={12} md={6}>
+          <FormsContainer />
+        </Grid>
+        <Grid item xs={12} md={6}>
+        <TasksContainer />
+        </Grid>
+      </Grid>
     </Container>
   )
 }
