@@ -1,23 +1,37 @@
-
-import { InputLabel, MenuItem, Select, Typography, FormControl } from "@mui/material"
+import { useState } from "react";
+import { Box, InputLabel, MenuItem, Select, Typography, FormControl } from "@mui/material"
 
 export default function Showform() {
 
-  const options = ['Not Important' , 'Important' , 'Urgent'];
+  const options = ['All', 'Not Important' , 'Important' , 'Urgent'];
 
+  const [input, setInput] = useState({
+    state: "All",
+    category: "All",
+  });
+
+  function handleChange(e) {
+    const value = e.target.value;
+    const name = e.target.name;
+
+    setInput({
+      [name]: value, // Sintaxis ES6 para actualizar la key correspondiente
+    });
+  }
   return (
-    <>
-      <Typography variant="h5">
+    <Box>
+    <Typography variant="h6">
         Filter by
       </Typography>
+    <Box sx={{display: 'flex',justifyContent: 'center', alignItems: 'center'}}>
       <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
-      <InputLabel id="demo-select-small-label">Category</InputLabel>
+      <InputLabel id="state">State</InputLabel>
         <Select
           labelId="state"
           id="state"
-          //value={formik.category}
+          //value={input.state}
           label="State"
-          //onChange={formik.handleChange}
+          //onChange={(e) => handleChange(e)}
         >
           <MenuItem>All</MenuItem>
           <MenuItem>Complete</MenuItem>
@@ -25,7 +39,7 @@ export default function Showform() {
         </Select>
 </FormControl>
 <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
-      <InputLabel id="demo-select-small-label">Category</InputLabel>
+      <InputLabel id="category">Category</InputLabel>
         <Select
           labelId="category"
           id="category"
@@ -38,6 +52,7 @@ export default function Showform() {
           ))}
         </Select>
 </FormControl>
-    </>
+    </ Box>
+    </Box>
   )
 }
