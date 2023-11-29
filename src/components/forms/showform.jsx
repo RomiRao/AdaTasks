@@ -1,6 +1,6 @@
 //import React from 'react'
 
-export default function showform() {
+export default function Showform() {
   return (
     <div>showform</div>
   )

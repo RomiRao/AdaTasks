@@ -1,6 +1,6 @@
 //import React from 'react'
 
-export default function submitform() {
+export default function Submitform() {
   return (
     <div>submitform</div>
   )

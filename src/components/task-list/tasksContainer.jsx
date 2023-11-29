@@ -1,6 +1,6 @@
 //import React from 'react'
 
-export default function tasksContainer() {
+export default function TasksContainer() {
   return (
     <div>tasksContainer</div>
   )

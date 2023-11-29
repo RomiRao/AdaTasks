@@ -1,6 +1,6 @@
 //import React from 'react'
 
-export default function tasksInfo() {
+export default function TasksInfo() {
   return (
     <div>tasksInfo</div>
   )
