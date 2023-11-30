@@ -1,8 +1,9 @@
-import { Typography } from "@mui/material";
+import { Typography,  IconButton } from "@mui/material";
 import { Box } from "@mui/system";
 import Checkbox from '@mui/material/Checkbox';
 import { useState } from "react";
-import { FaTrash } from "react-icons/fa6";
+import { FaTrash } from "react-icons/fa";
+
 
 export default function Task() {
   const [checked, setChecked] = useState(false);
@@ -12,17 +13,19 @@ export default function Task() {
   };
 
   return (
-    <Box sx={{bgcolor: '#D9D9D9', p: '10px', borderRadius: '10px', width: '90%', display: 'flex', justifyContent: 'space-between'}}>
+    <Box sx={{bgcolor: '#ede3e3', py: '3px', px: '20px', borderRadius: '60px', width: '90%', display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
       <Typography>
         Example task
       </Typography>
-      <Box>
+      <Box sx={{display: 'flex', alignItems: 'center'}}>
         <Checkbox
           checked={checked}
           onChange={handleChange}
           inputProps={{ 'aria-label': 'controlled' }}
         />
-        <FaTrash/>
+        <IconButton aria-label="delete">
+          <FaTrash fontSize="17px" />
+        </IconButton>
       </Box>
     </Box>
   )
