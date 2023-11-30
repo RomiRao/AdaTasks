@@ -1,7 +1,7 @@
 import './App.css'
 import { Container, Grid } from '@mui/material'
-import FormsContainer from './components/forms/formsContainer'
-import TasksContainer from './components/task-list/tasksContainer'
+import FormsContainer from './components/forms/FormsContainer'
+import TasksContainer from './components/task-list/TasksContainer'
 
 function App() {
 
