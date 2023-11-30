@@ -3,7 +3,7 @@
 import { Box, Container } from "@mui/material";
 import Task from "./Task"
 import TasksInfo from "./TasksInfo"
-import image from "../../../public/images/chopper.png"
+import image from "../../assets/images/chopper.png"
 
 export default function TasksContainer() {
   return (

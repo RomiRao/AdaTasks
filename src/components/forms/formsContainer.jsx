@@ -3,7 +3,7 @@
 import Submitform from "./Submitform";
 import Showform from "./Showform"
 import { Box } from "@mui/material";
-import image from "../../../public/images/todo-title.png"
+import image from "../../assets/images/todo-title.png"
 
 export default function FormsContainer() {
   return (
