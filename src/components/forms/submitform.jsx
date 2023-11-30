@@ -1,8 +1,13 @@
 //import { useState } from "react";
-import { Box, TextField, Select, MenuItem, FormControl, InputLabel } from "@mui/material";
+import { Box, TextField, Select, MenuItem, FormControl, InputLabel, Fab } from "@mui/material";
 import { useFormik } from 'formik';
+import { IoMdAdd } from "react-icons/io";
+import { useState } from "react";
 
 export default function Submitform() {
+
+  const [tasks , setTasks] = useState([])
+
   const formik = useFormik({
     initialValues: {
       task: "",
@@ -20,6 +25,8 @@ export default function Submitform() {
     },
     onSubmit: values => {
         alert(JSON.stringify(values, null, 2));
+        console.log(...tasks, values)
+        setTasks(...tasks, values)
     },
 
     
@@ -36,9 +43,9 @@ export default function Submitform() {
   // };
 
   return (
-    <Box component='form' onSubmit={formik.handleSubmit} p={3}>
-    <FormControl  sx={{ m: 1, minWidth: 120 }} size="small">
-    <TextField
+    <Box component='form' onSubmit={formik.handleSubmit} p={3} sx={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+      <FormControl  sx={{ m: 1, minWidth: 120 }} size="small">
+        <TextField
           error={formik.errors.task ? true : false}
           label="Enter your task"
           id="task"
@@ -47,9 +54,9 @@ export default function Submitform() {
           value={formik.values.task} name="task" 
           helperText={formik.errors.task ? formik.errors.task : null}
         />
-    </FormControl>
-<FormControl sx={{ m: 1, minWidth: 120 }} size="small">
-      <InputLabel id="demo-select-small-label">Category</InputLabel>
+      </FormControl>
+      <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
+        <InputLabel id="demo-select-small-label">Category</InputLabel>
         <Select
           labelId="category"
           id="category"
@@ -61,7 +68,12 @@ export default function Submitform() {
             <MenuItem key={option} value={option}>{option}</MenuItem>
           ))}
         </Select>
-</FormControl>
+      </FormControl>
+      <FormControl sx={{display: 'flex', justifyContent: 'center', alignItems: 'center', ml: '10px'}}>
+      <Fab size="small" color="primary" aria-label="add" type="submit">
+        <IoMdAdd />
+      </Fab>
+      </FormControl>
     </Box>
   )
 }
