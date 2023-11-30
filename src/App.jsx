@@ -1,4 +1,4 @@
-import './App.css'
+import './index.css'
 import { Container, Grid } from '@mui/material'
 import FormsContainer from './components/forms/FormsContainer'
 import TasksContainer from './components/task-list/TasksContainer'
