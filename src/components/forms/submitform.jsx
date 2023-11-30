@@ -35,13 +35,6 @@ export default function Submitform() {
 
   const options = ['Not Important' , 'Important' , 'Urgent'];
 
-
-  // const [selected, setSelected] = useState(options[0].value);
-
-  // const handleChange = e => {
-  //   setSelected(e.target.value);
-  // };
-
   return (
     <Box component='form' onSubmit={formik.handleSubmit} p={3} sx={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
       <FormControl  sx={{ m: 1, minWidth: 120 }} size="small">
@@ -60,9 +53,10 @@ export default function Submitform() {
         <Select
           labelId="category"
           id="category"
-          value={formik.category}
+          value={formik.values.category}
           label="Category"
           onChange={formik.handleChange}
+          name="category"
         >
           {options.map(option => (
             <MenuItem key={option} value={option}>{option}</MenuItem>
