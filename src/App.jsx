@@ -3,21 +3,11 @@ import { Container, Grid } from '@mui/material'
 import FormsContainer from './components/forms/FormsContainer'
 import TasksContainer from './components/task-list/TasksContainer'
 import { useState } from 'react'
-import db from "../firestore.config";
-import { getDocs, collection } from "firebase/firestore"; 
 
 function App() {
 
-  const [ tasks , setTasks] = useState()
+  const [ tasks , setTasks] = useState(JSON.parse(localStorage.getItem('tasks')) || [])
 
-  window.addEventListener("load", async () => {
-    let data = [];
-    const docs = await getDocs(collection(db, 'Tasks'));
-    docs.forEach((doc) => {
-      data.push({ ...doc.data(), id: doc.id });
-    });
-    setTasks(data);
-  });
 
   return (
     <Container >
