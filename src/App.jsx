@@ -16,7 +16,7 @@ function App() {
           <FormsContainer setTasks={setTasks} tasks={tasks}/>
         </Grid>
         <Grid item xs={12} md={6}>
-        <TasksContainer tasks={tasks}/>
+        <TasksContainer setTasks={setTasks} tasks={tasks}/>
         </Grid>
       </Grid>
     </Container>
