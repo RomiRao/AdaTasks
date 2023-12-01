@@ -25,8 +25,6 @@ export default function Submitform() {
     },
     onSubmit: values => {
         alert(JSON.stringify(values, null, 2));
-        console.log(...tasks, values)
-        setTasks(...tasks, values)
     },
 
     
