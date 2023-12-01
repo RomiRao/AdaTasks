@@ -2,11 +2,11 @@
 import { Box, TextField, Select, MenuItem, FormControl, InputLabel, Fab } from "@mui/material";
 import { useFormik } from 'formik';
 import { IoMdAdd } from "react-icons/io";
-import { useState } from "react";
+import db from "../../../firestore.config";
+import { doc, addDoc, collection } from "firebase/firestore"; 
+
 
 export default function Submitform() {
-
-  const [tasks , setTasks] = useState([])
 
   const formik = useFormik({
     initialValues: {
@@ -24,9 +24,12 @@ export default function Submitform() {
         return errors
     },
     onSubmit: values => {
-        alert(JSON.stringify(values, null, 2));
-        console.log(...tasks, values)
-        setTasks(...tasks, values)
+        //alert(JSON.stringify(values, null, 2));
+        const doc = addDoc(collection(db, 'Tasks'), {
+          task: values.task,
+          category: values.category,
+          complete: false,
+        });
     },
 
     
@@ -34,13 +37,6 @@ export default function Submitform() {
 
 
   const options = ['Not Important' , 'Important' , 'Urgent'];
-
-
-  // const [selected, setSelected] = useState(options[0].value);
-
-  // const handleChange = e => {
-  //   setSelected(e.target.value);
-  // };
 
   return (
     <Box component='form' onSubmit={formik.handleSubmit} p={3} sx={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
@@ -60,9 +56,10 @@ export default function Submitform() {
         <Select
           labelId="category"
           id="category"
-          value={formik.category}
+          value={formik.values.category}
           label="Category"
           onChange={formik.handleChange}
+          name="category"
         >
           {options.map(option => (
             <MenuItem key={option} value={option}>{option}</MenuItem>
