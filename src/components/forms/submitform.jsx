@@ -2,11 +2,11 @@
 import { Box, TextField, Select, MenuItem, FormControl, InputLabel, Fab } from "@mui/material";
 import { useFormik } from 'formik';
 import { IoMdAdd } from "react-icons/io";
-import { useState } from "react";
+import db from "../../../firestore.config";
+import { doc, addDoc, collection } from "firebase/firestore"; 
+
 
 export default function Submitform() {
-
-  const [tasks , setTasks] = useState([])
 
   const formik = useFormik({
     initialValues: {
@@ -24,7 +24,12 @@ export default function Submitform() {
         return errors
     },
     onSubmit: values => {
-        alert(JSON.stringify(values, null, 2));
+        //alert(JSON.stringify(values, null, 2));
+        const doc = addDoc(collection(db, 'Tasks'), {
+          task: values.task,
+          category: values.category,
+          complete: false,
+        });
     },
 
     
