@@ -3,10 +3,11 @@ import { Box } from "@mui/system";
 import Checkbox from '@mui/material/Checkbox';
 import { useState } from "react";
 import { FaTrash } from "react-icons/fa";
+import { AiFillExclamationCircle } from "react-icons/ai";
 
 
-export default function Task() {
-  const [checked, setChecked] = useState(false);
+export default function Task({task, category, complete}) {
+  const [checked, setChecked] = useState(complete);
 
   const handleChange = (event) => {
     setChecked(event.target.checked);
@@ -15,9 +16,10 @@ export default function Task() {
   return (
     <Box sx={{bgcolor: '#ede3e3', py: '3px', px: '20px', borderRadius: '60px', width: '90%', display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
       <Typography>
-        Example task
+        {task}
       </Typography>
       <Box sx={{display: 'flex', alignItems: 'center'}}>
+        {category === "Important" && <AiFillExclamationCircle />}
         <Checkbox
           checked={checked}
           onChange={handleChange}
