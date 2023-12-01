@@ -6,14 +6,14 @@ import { useState } from 'react'
 
 function App() {
 
-  const [ tasks , setTasks] = useState(JSON.parse(localStorage.getItem('tasks')) || [])
+  const [ tasks , setTasks] = useState(JSON.parse(localStorage.getItem('Tasks')) || [])
 
 
   return (
     <Container >
       <Grid container pt={12}>
         <Grid item xs={12} md={6}>
-          <FormsContainer setTasks={setTasks}/>
+          <FormsContainer setTasks={setTasks} tasks={tasks}/>
         </Grid>
         <Grid item xs={12} md={6}>
         <TasksContainer tasks={tasks}/>
