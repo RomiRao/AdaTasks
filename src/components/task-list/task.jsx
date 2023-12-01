@@ -15,9 +15,7 @@ export default function Task({task, category, complete}) {
 
   return (
     <Box sx={{bgcolor: '#ede3e3', py: '3px', px: '20px', borderRadius: '60px', width: '90%', display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
-      <Typography>
-        {task}
-      </Typography>
+      {complete? <Typography sx={{textDecoration: 'line-through', color: 'gray'}}>{task}</Typography> : <Typography>{task}</Typography> }
       <Box sx={{display: 'flex', alignItems: 'center'}}>
         {category === "Urgent" && <AiFillExclamationCircle color='red' />}
         <Checkbox
