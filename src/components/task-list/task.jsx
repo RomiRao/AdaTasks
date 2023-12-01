@@ -19,7 +19,7 @@ export default function Task({task, category, complete}) {
         {task}
       </Typography>
       <Box sx={{display: 'flex', alignItems: 'center'}}>
-        {category === "Important" && <AiFillExclamationCircle />}
+        {category === "Urgent" && <AiFillExclamationCircle />}
         <Checkbox
           checked={checked}
           onChange={handleChange}
