@@ -11,7 +11,7 @@ export default function Submitform({setTasks, tasks}) {
       task: "",
       category: "",
       complete: false,
-      id: self.crypto.randomUUID(),
+      id: "",
     },
     validate: values => {
         const errors = {};
@@ -23,9 +23,11 @@ export default function Submitform({setTasks, tasks}) {
         return errors
     },
     onSubmit: values => {
-        //alert(JSON.stringify(values, null, 2));
-        setTasks([...tasks, values])
-        localStorage.setItem("Tasks", JSON.stringify([...tasks, values]));
+      //alert(JSON.stringify(values, null, 2));
+      values.id = self.crypto.randomUUID(); 
+      setTasks([...tasks, values]);
+      localStorage.setItem("Tasks", JSON.stringify([...tasks, values]));
+
     },
 
     
