@@ -6,11 +6,24 @@ import { FaTrash } from "react-icons/fa";
 import { AiFillExclamationCircle } from "react-icons/ai";
 
 
-export default function Task({task, category, complete}) {
+export default function Task({id, task, category, complete, setTasks, tasks}) {
   const [checked, setChecked] = useState(complete);
 
   const handleChange = (event) => {
-    setChecked(event.target.checked);
+    const newChecked = event.target.checked
+    setChecked(newChecked);
+      const updatedTasks = tasks.map((t) =>
+        t.id === id ? { ...t, complete: newChecked } : t
+      );
+      
+      localStorage.setItem("Tasks", JSON.stringify(updatedTasks));
+      setTasks(updatedTasks);
+  };
+
+  const handleDelete = () => {
+    const updatedTasks = tasks.filter((t) => t.id !== id);
+    setTasks(updatedTasks);
+    localStorage.setItem("Tasks", JSON.stringify(updatedTasks));
   };
 
   return (
@@ -20,10 +33,10 @@ export default function Task({task, category, complete}) {
         {category === "Urgent" && <AiFillExclamationCircle color='red' />}
         <Checkbox
           checked={checked}
-          onChange={handleChange}
+          onChange={(e) => handleChange(e)}
           inputProps={{ 'aria-label': 'controlled' }}
         />
-        <IconButton aria-label="delete">
+        <IconButton aria-label="delete" onClick={handleDelete}>
           <FaTrash fontSize="17px" />
         </IconButton>
       </Box>
