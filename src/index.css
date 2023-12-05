@@ -1,4 +1,7 @@
 html, body, #root {
-    background-color: #FFF4F5;
+    background-image: linear-gradient(to right top, #ecc2c6, #e6c8da, #dacfe8, #cdd8ee, #c6dfed);
     height: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }

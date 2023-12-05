@@ -27,8 +27,8 @@ export default function Task({id, task, category, complete, setTasks, tasks}) {
   };
 
   return (
-    <Box sx={{bgcolor: '#ede3e3', py: '3px', px: '20px', borderRadius: '60px', width: '90%', display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
-      {complete? <Typography sx={{textDecoration: 'line-through', color: 'gray'}}>{task}</Typography> : <Typography>{task}</Typography> }
+    <Box sx={{bgcolor: '#d5e7f2', py: '7px', px: '20px', borderRadius: '60px', width: '90%', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexDirection: { xs: 'column', sm: 'row', md: 'row' }}}>
+      {complete? <Typography sx={{textDecoration: 'line-through', color: 'gray'}}>{task}</Typography> : <Typography color='#4E6AAC'>{task}</Typography> }
       <Box sx={{display: 'flex', alignItems: 'center'}}>
         {category && <AiFillExclamationCircle color='red' />}
         <Checkbox
