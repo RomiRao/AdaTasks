@@ -1,47 +1,26 @@
 import { useState } from "react";
 import { Box, InputLabel, MenuItem, Select, Typography, FormControl } from "@mui/material"
 
-export default function Showform({setTasks}) {
+export default function Showform({setFilter}) {
 
-  const categories = [{value: 'All', name: 'All'}, {value: 'true', name: 'Urgent'} , {value: 'false', name: 'Not Urgent'}];
-  const states = [{value: 'All', name: 'All'}, {value: 'true', name: 'Done'} , {value: 'false', name: 'Undone'}];
+  const categories = [{value: 'All', name: 'All'}, {value: true, name: 'Urgent'} , {value: false, name: 'Not Urgent'}];
+  const states = [{value: 'All', name: 'All'}, {value: true, name: 'Done'} , {value: false, name: 'Undone'}];
   
   const [input, setInput] = useState({
     state: 'All',
     category: 'All',
   });
 
-  const handleChangeComplete = (e) => {
+  const handleChange = (e) => {
     const { value, name } = e.target;
     setInput((prevInput) => ({
       ...prevInput,
       [name]: value,
     }));
-    setTasks(() => {
-      const filteredTasks = JSON.parse(localStorage.getItem("Tasks")).filter((task) => {
-        return (value === "true" || value === "false") ?
-          (String(task.complete) === value && (input.category === 'All' || String(task.category) === input.category)) :
-          (input.category === 'All' || String(task.category) === input.category);
-      });
-    });
-  };
-
-  const handleChangeUrgent = (e) => {
-    const { value, name } = e.target;
-    setInput((prevInput) => ({
+    setFilter((prevInput) => ({
       ...prevInput,
       [name]: value,
     }));
-    setTasks(() => {
-      const filteredTasks = JSON.parse(localStorage.getItem("Tasks")).filter((task) => {
-        return (value === "true" || value === "false") ?
-          (String(task.category) === value && (input.state === 'All' || String(task.complete) === input.state)) :
-          (input.state === 'All' || String(task.complete) === input.state);
-      });
-    
-      return filteredTasks;
-    });
-    
   };
 
   return (
@@ -57,7 +36,7 @@ export default function Showform({setTasks}) {
           id="state"
           value={input.state}
           label='state'
-          onChange={(e) => handleChangeComplete(e)}
+          onChange={(e) => handleChange(e)}
           name="state"
         >
 {states.map(option => (
@@ -72,7 +51,7 @@ export default function Showform({setTasks}) {
           id="category"
           value={input.category}
           label="Category"
-          onChange={(e) => handleChangeUrgent(e)}
+          onChange={(e) => handleChange(e)}
           name="category"
         >
           {categories.map(option => (
