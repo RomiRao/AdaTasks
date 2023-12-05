@@ -1,4 +1,3 @@
-//import { useState } from "react";
 import { Box, TextField, Select, MenuItem, FormControl, InputLabel, Fab } from "@mui/material";
 import { useFormik } from 'formik';
 import { IoMdAdd } from "react-icons/io";
@@ -9,7 +8,7 @@ export default function Submitform({setTasks, tasks}) {
   const formik = useFormik({
     initialValues: {
       task: "",
-      category: "Not Urgent",
+      category: false,
       complete: false,
       id: "",
     },
@@ -37,8 +36,8 @@ export default function Submitform({setTasks, tasks}) {
   const options = [{value: true, name: 'Urgent'} , {value: false, name: 'Not Urgent'}];
 
   return (
-    <Box component='form' onSubmit={formik.handleSubmit} sx={{mt: '20px', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-      <FormControl  sx={{ m: 1, minWidth: 120 }} size="small">
+    <Box component='form' onSubmit={formik.handleSubmit} sx={{m: '20px', display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: { xs: 'column', sm: 'row', md: 'row' }}}>
+      <FormControl  sx={{ m: 1 }} size="small">
         <TextField
           error={formik.errors.task ? true : false}
           label="Enter your task"
@@ -55,7 +54,6 @@ export default function Submitform({setTasks, tasks}) {
           labelId="category"
           id="category"
           label="category"
-          defaultValue="Not Urgent"
           value={formik.values.category}
           onChange={formik.handleChange}
           name="category"
