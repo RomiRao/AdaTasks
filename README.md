@@ -4,11 +4,15 @@
 
 The main goal of this project is to make a ToDo app where the user can create tasks to do and visualize them depending on what the user needs, using react as a library for develop the code and a css framework for react.
 
-<img src="./src/assets/images/example-1.png" style="width: 60%;" alt="meme example"/>
+<p align="center"> 
+    <img src="./src/assets/images/example-1.png" style="width: 60%;" alt="meme example"/>
+</p>
 
 ## Skills used
 
-<img src="https://skillicons.dev/icons?i=git,css,html,js,materialui,react"/>
+<p align="center"> 
+    <img src="https://skillicons.dev/icons?i=git,css,html,js,materialui,react"/>
+</p>
 
 ## WEBSITE STRUCTURE / HOW TO USE IT
 
@@ -20,23 +24,36 @@ In this section I designed the forms structures. We can se 2 forms with inputs i
     The first one is to be able to add any task that the user needs to do. He/she has to write on the input text between 4 and 15 characters, otherwise it wont be able to submit. Also he can add the urgent/not urgent category with the select besides the input text, for default it will always be "not urgent" so if he doesn't touch it, it will submit the task with that category.
     All the tasks will be saved on the localstorage of the application that is using to open the app.
 
-<img src="./src/assets/images/example-submit.png" style="width: 50%;" alt="forms example">
+<p align="center"> 
+    <img src="./src/assets/images/example-submit.png" style="width: 50%;" alt="forms example">
+</p>
 
 -   ShowForm
     This form is just only to filter the tasks, so it will be easier for the user to see tasks depending on what he needs. For default both selects will be always on "All", so if the user needs to see certain tasks (like done tasks) he'll need to change bi clicking on the options inside the select. You can stack the filters.
 
-<img src="./src/assets/images/example-show.png" style="width: 50%;" alt="forms example">
+<p align="center"> 
+    <img src="./src/assets/images/example-show.png" style="width: 50%;" alt="forms example">
+</p>
 
 ### ✦ Tasks Container
 
-At this section we'll visualize the tasks that the user updated, with filters or all the tasks. On every task the user will be able to see a red mark if the task was marked at urgent, besides that there is a checkbox that if the user marks it, it will sho the task as complete. Also it has a trash icon that if the user press it will delete the task from the local storage.
+At this section we'll visualize the tasks that the user updated, with filters or all the tasks.
 
-<img src="./src/assets/images/example-tasks.png" style="width: 50%;" alt="tasks example">
-<img src="./src/assets/images/example-task.png" style="width: 50%;" alt="tasks example">
+<p align="center"> 
+    <img src="./src/assets/images/example-tasks.png" style="width: 50%;" alt="tasks example">
+</p>
+
+On every task the user will be able to see a red mark if the task was marked at urgent, besides that there is a checkbox that if the user marks it, it will sho the task as complete. Also it has a trash icon that if the user press it will delete the task from the local storage.
+
+<p align="center"> 
+   <img src="./src/assets/images/example-task.png" style="width: 50%;" alt="tasks example">
+</p>
 
 On the left/down corner the user will be able to see by icons how many tasks are complete and how many are not.
 
-<img src="./src/assets/images/example-tasks-info.png" style="width: 50%;" alt="tasks example">
+<p align="center"> 
+   <img src="./src/assets/images/example-task-info.png" style="width: 50%;" alt="tasks example">
+</p>
 
 ## NEW KNOWLEDGE APPLIED
 
