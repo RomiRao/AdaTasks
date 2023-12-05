@@ -13,11 +13,10 @@ export default function TasksContainer({tasks, setTasks}) {
         {tasks.map(task =>  (<Task key={task.id} id={task.id} setTasks={setTasks} task={task.task} category={task.category} complete={task.complete} tasks={tasks} />))}
       </Stack>
       <Box sx={{display: 'flex', justifyContent: 'space-between', mt: '15px'}}>
-        <TasksInfo />
+        <TasksInfo tasks={tasks} />
         <img src={image} alt="chopper illustration" style={{width: '50%'}}/>
       </Box>
     </Container>
   )
 }
 
-// {tasks.map(task =>  (<Task key={task.id} id={task.id} setTasks={setTasks} task={task.task} category={task.category} complete={task.complete} tasks={tasks} />))}
