@@ -23,8 +23,6 @@ export default function Showform({setTasks}) {
           (String(task.complete) === value && (input.category === 'All' || String(task.category) === input.category)) :
           (input.category === 'All' || String(task.category) === input.category);
       });
-    
-      return filteredTasks;
     });
   };
 
