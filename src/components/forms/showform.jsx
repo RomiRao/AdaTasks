@@ -1,23 +1,51 @@
 import { useState } from "react";
 import { Box, InputLabel, MenuItem, Select, Typography, FormControl } from "@mui/material"
 
-export default function Showform() {
+export default function Showform({setTasks}) {
 
-  const options = ['All', 'Not Important' , 'Important' , 'Urgent'];
-
+  const categories = [{value: 'All', name: 'All'}, {value: 'true', name: 'Urgent'} , {value: 'false', name: 'Not Urgent'}];
+  const states = [{value: 'All', name: 'All'}, {value: 'true', name: 'Done'} , {value: 'false', name: 'Undone'}];
+  
   const [input, setInput] = useState({
-    state: "All",
-    category: "All",
+    state: 'All',
+    category: 'All',
   });
 
-  function handleChange(e) {
-    const value = e.target.value;
-    const name = e.target.name;
-
-    setInput({
-      [name]: value, // Sintaxis ES6 para actualizar la key correspondiente
+  const handleChangeComplete = (e) => {
+    const { value, name } = e.target;
+    setInput((prevInput) => ({
+      ...prevInput,
+      [name]: value,
+    }));
+    setTasks(() => {
+      const filteredTasks = JSON.parse(localStorage.getItem("Tasks")).filter((task) => {
+        return (value === "true" || value === "false") ?
+          (String(task.complete) === value && (input.category === 'All' || String(task.category) === input.category)) :
+          (input.category === 'All' || String(task.category) === input.category);
+      });
+    
+      return filteredTasks;
     });
-  }
+  };
+
+  const handleChangeUrgent = (e) => {
+    const { value, name } = e.target;
+    setInput((prevInput) => ({
+      ...prevInput,
+      [name]: value,
+    }));
+    setTasks(() => {
+      const filteredTasks = JSON.parse(localStorage.getItem("Tasks")).filter((task) => {
+        return (value === "true" || value === "false") ?
+          (String(task.category) === value && (input.state === 'All' || String(task.complete) === input.state)) :
+          (input.state === 'All' || String(task.complete) === input.state);
+      });
+    
+      return filteredTasks;
+    });
+    
+  };
+
   return (
     <Box>
     <Typography variant="h6">
@@ -25,17 +53,18 @@ export default function Showform() {
       </Typography>
     <Box sx={{display: 'flex',justifyContent: 'center', alignItems: 'center'}}>
       <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
-      <InputLabel id="state">State</InputLabel>
+        <InputLabel id="state">State</InputLabel>
         <Select
           labelId="state"
           id="state"
-          //value={input.state}
-          label="State"
-          //onChange={(e) => handleChange(e)}
+          value={input.state}
+          label='state'
+          onChange={(e) => handleChangeComplete(e)}
+          name="state"
         >
-          <MenuItem>All</MenuItem>
-          <MenuItem>Complete</MenuItem>
-          <MenuItem>Uncomplete</MenuItem>
+{states.map(option => (
+            <MenuItem key={option.name} value={option.value}>{option.name}</MenuItem>
+          ))}
         </Select>
 </FormControl>
 <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
@@ -43,12 +72,13 @@ export default function Showform() {
         <Select
           labelId="category"
           id="category"
-          //value={formik.category}
+          value={input.category}
           label="Category"
-          //onChange={formik.handleChange}
+          onChange={(e) => handleChangeUrgent(e)}
+          name="category"
         >
-          {options.map(option => (
-            <MenuItem key={option} value={option}>{option}</MenuItem>
+          {categories.map(option => (
+            <MenuItem key={option.name} value={option.value}>{option.name}</MenuItem>
           ))}
         </Select>
 </FormControl>

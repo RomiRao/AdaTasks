@@ -8,15 +8,20 @@ function App() {
 
   const [ tasks , setTasks] = useState(JSON.parse(localStorage.getItem('Tasks')) || [])
 
+  const [filter, setFilter] = useState({
+    state: 'All',
+    category: 'All',
+  });
+
 
   return (
     <Container >
       <Grid container pt={12}>
         <Grid item xs={12} md={6}>
-          <FormsContainer setTasks={setTasks} tasks={tasks}/>
+          <FormsContainer setTasks={setTasks} setFilter={setFilter} tasks={tasks} filter={filter}/>
         </Grid>
         <Grid item xs={12} md={6}>
-        <TasksContainer setTasks={setTasks} tasks={tasks}/>
+        <TasksContainer setTasks={setTasks} filter={filter} tasks={tasks}/>
         </Grid>
       </Grid>
     </Container>

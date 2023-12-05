@@ -19,3 +19,5 @@ export default function TasksContainer({tasks, setTasks}) {
     </Container>
   )
 }
+
+// {tasks.map(task =>  (<Task key={task.id} id={task.id} setTasks={setTasks} task={task.task} category={task.category} complete={task.complete} tasks={tasks} />))}

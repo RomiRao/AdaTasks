@@ -9,7 +9,7 @@ export default function Submitform({setTasks, tasks}) {
   const formik = useFormik({
     initialValues: {
       task: "",
-      category: "",
+      category: "Not Urgent",
       complete: false,
       id: "",
     },
@@ -23,18 +23,18 @@ export default function Submitform({setTasks, tasks}) {
         return errors
     },
     onSubmit: values => {
-      //alert(JSON.stringify(values, null, 2));
-      values.id = self.crypto.randomUUID(); 
-      setTasks([...tasks, values]);
-      localStorage.setItem("Tasks", JSON.stringify([...tasks, values]));
-
+      values.id = self.crypto.randomUUID();
+      const tareas = JSON.parse(localStorage.getItem('Tasks'))
+      setTasks([...tareas, values]);
+      localStorage.setItem("Tasks", JSON.stringify([...tareas, values]));
+      formik.resetForm()
     },
 
     
 });
 
 
-  const options = ['Not Important' , 'Important' , 'Urgent'];
+  const options = [{value: true, name: 'Urgent'} , {value: false, name: 'Not Urgent'}];
 
   return (
     <Box component='form' onSubmit={formik.handleSubmit} p={3} sx={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
@@ -50,17 +50,18 @@ export default function Submitform({setTasks, tasks}) {
         />
       </FormControl>
       <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
-        <InputLabel id="demo-select-small-label">Category</InputLabel>
+        <InputLabel id='category'>Category</InputLabel>
         <Select
           labelId="category"
           id="category"
+          label="category"
+          defaultValue="Not Urgent"
           value={formik.values.category}
-          label="Category"
           onChange={formik.handleChange}
           name="category"
         >
           {options.map(option => (
-            <MenuItem key={option} value={option}>{option}</MenuItem>
+            <MenuItem key={option.name} value={option.value}>{option.name}</MenuItem>
           ))}
         </Select>
       </FormControl>
