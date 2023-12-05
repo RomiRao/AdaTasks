@@ -14,7 +14,7 @@ export default function TasksInfo({tasks}) {
 
   return (
   <Box sx={{display: 'flex', alignItems: 'flex-end', width: '60%', mb: '10px'}}>
-    <Box sx={{display: 'flex', width: '40%', alignItems: 'center' , justifyContent: 'space-around', borderRadius: '3px', p: '5px'}}>
+    <Box sx={{display: 'flex', width: '40%', alignItems: 'center' , justifyContent: 'space-around', borderRadius: '3px', p: '5px', flexDirection: { xs: 'column', sm: 'row', md: 'row' }}}>
       <Box sx={{display: 'flex', alignItems: 'center', color:"red"}}>
         <RxCrossCircled  />
         <Typography component='span' ml={1}>{tasksInfo(false)}</Typography>
