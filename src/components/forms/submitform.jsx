@@ -23,9 +23,8 @@ export default function Submitform({setTasks, tasks}) {
     },
     onSubmit: values => {
       values.id = self.crypto.randomUUID();
-      const tareas = JSON.parse(localStorage.getItem('Tasks'))
-      setTasks([...tareas, values]);
-      localStorage.setItem("Tasks", JSON.stringify([...tareas, values]));
+      setTasks([...tasks, values]);
+      localStorage.setItem("Tasks", JSON.stringify([...tasks, values]));
       formik.resetForm()
     },
 
