@@ -51,7 +51,7 @@ export default function Showform({setTasks}) {
     <Typography variant="h6">
         Filter by
       </Typography>
-    <Box sx={{display: 'flex',justifyContent: 'center', alignItems: 'center'}}>
+    <Box sx={{display: 'flex',justifyContent: 'center', alignItems: 'center', flexDirection: { xs: 'column', sm: 'row', md: 'row' }}}>
       <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
         <InputLabel id="state">State</InputLabel>
         <Select
