@@ -46,13 +46,13 @@ At this section we'll visualize the tasks that the user updated, with filters or
 On every task the user will be able to see a red mark if the task was marked at urgent, besides that there is a checkbox that if the user marks it, it will sho the task as complete. Also it has a trash icon that if the user press it will delete the task from the local storage.
 
 <p align="center"> 
-   <img src="./src/assets/images/example-task.png" style="width: 50%;" alt="tasks example">
+   <img src="./src/assets/images/example-task.png" style="width: 60%;" alt="tasks example">
 </p>
 
 On the left/down corner the user will be able to see by icons how many tasks are complete and how many are not.
 
 <p align="center"> 
-   <img src="./src/assets/images/example-task-info.png" style="width: 50%;" alt="tasks example">
+   <img src="./src/assets/images/example-task-info.png" style="width: 20%;" alt="tasks example">
 </p>
 
 ## NEW KNOWLEDGE APPLIED
