@@ -1,46 +1,42 @@
-//import { useState } from "react";
 import { Box, TextField, Select, MenuItem, FormControl, InputLabel, Fab } from "@mui/material";
 import { useFormik } from 'formik';
 import { IoMdAdd } from "react-icons/io";
-import db from "../../../firestore.config";
-import { doc, addDoc, collection } from "firebase/firestore"; 
 
 
-export default function Submitform() {
+export default function Submitform({setTasks, tasks}) {
 
   const formik = useFormik({
     initialValues: {
       task: "",
-      category: "",
+      category: false,
       complete: false,
+      id: "",
     },
     validate: values => {
         const errors = {};
         if(!values.task) {
             errors.task = 'Required';
         } else if (values.task.length < 4 || values.task.length > 15) {
-            errors.task = "Must be between 4 and 15 characters"
+            errors.task = "Must be 4 - 15 characters"
         }
         return errors
     },
     onSubmit: values => {
-        //alert(JSON.stringify(values, null, 2));
-        const doc = addDoc(collection(db, 'Tasks'), {
-          task: values.task,
-          category: values.category,
-          complete: false,
-        });
+      values.id = self.crypto.randomUUID();
+      setTasks([...tasks, values]);
+      localStorage.setItem("Tasks", JSON.stringify([...tasks, values]));
+      formik.resetForm()
     },
 
     
 });
 
 
-  const options = ['Not Important' , 'Important' , 'Urgent'];
+  const options = [{value: true, name: 'Urgent'} , {value: false, name: 'Not Urgent'}];
 
   return (
-    <Box component='form' onSubmit={formik.handleSubmit} p={3} sx={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-      <FormControl  sx={{ m: 1, minWidth: 120 }} size="small">
+    <Box component='form' onSubmit={formik.handleSubmit} sx={{m: '20px', display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: { xs: 'column', sm: 'row', md: 'row' }}}>
+      <FormControl  sx={{ m: 1 }} size="small">
         <TextField
           error={formik.errors.task ? true : false}
           label="Enter your task"
@@ -52,17 +48,17 @@ export default function Submitform() {
         />
       </FormControl>
       <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
-        <InputLabel id="demo-select-small-label">Category</InputLabel>
+        <InputLabel id='category'>Category</InputLabel>
         <Select
           labelId="category"
           id="category"
+          label="category"
           value={formik.values.category}
-          label="Category"
           onChange={formik.handleChange}
           name="category"
         >
           {options.map(option => (
-            <MenuItem key={option} value={option}>{option}</MenuItem>
+            <MenuItem key={option.name} value={option.value}>{option.name}</MenuItem>
           ))}
         </Select>
       </FormControl>

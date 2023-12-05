@@ -1,41 +1,47 @@
 import { useState } from "react";
 import { Box, InputLabel, MenuItem, Select, Typography, FormControl } from "@mui/material"
 
-export default function Showform() {
+export default function Showform({setFilter}) {
 
-  const options = ['All', 'Not Important' , 'Important' , 'Urgent'];
-
+  const categories = [{value: 'All', name: 'All'}, {value: true, name: 'Urgent'} , {value: false, name: 'Not Urgent'}];
+  const states = [{value: 'All', name: 'All'}, {value: true, name: 'Done'} , {value: false, name: 'Undone'}];
+  
   const [input, setInput] = useState({
-    state: "All",
-    category: "All",
+    state: 'All',
+    category: 'All',
   });
 
-  function handleChange(e) {
-    const value = e.target.value;
-    const name = e.target.name;
+  const handleChange = (e) => {
+    const { value, name } = e.target;
+    setInput((prevInput) => ({
+      ...prevInput,
+      [name]: value,
+    }));
+    setFilter((prevInput) => ({
+      ...prevInput,
+      [name]: value,
+    }));
+  };
 
-    setInput({
-      [name]: value, // Sintaxis ES6 para actualizar la key correspondiente
-    });
-  }
   return (
     <Box>
     <Typography variant="h6">
         Filter by
       </Typography>
-    <Box sx={{display: 'flex',justifyContent: 'center', alignItems: 'center'}}>
+    <Box sx={{display: 'flex',justifyContent: 'center', alignItems: 'center', flexDirection: { xs: 'column', sm: 'row', md: 'row' }}}>
       <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
-      <InputLabel id="state">State</InputLabel>
+        <InputLabel id="state">State</InputLabel>
         <Select
           labelId="state"
           id="state"
-          //value={input.state}
-          label="State"
-          //onChange={(e) => handleChange(e)}
+          value={input.state}
+          label='state'
+          onChange={(e) => handleChange(e)}
+          name="state"
         >
-          <MenuItem>All</MenuItem>
-          <MenuItem>Complete</MenuItem>
-          <MenuItem>Uncomplete</MenuItem>
+{states.map(option => (
+            <MenuItem key={option.name} value={option.value}>{option.name}</MenuItem>
+          ))}
         </Select>
 </FormControl>
 <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
@@ -43,12 +49,13 @@ export default function Showform() {
         <Select
           labelId="category"
           id="category"
-          //value={formik.category}
+          value={input.category}
           label="Category"
-          //onChange={formik.handleChange}
+          onChange={(e) => handleChange(e)}
+          name="category"
         >
-          {options.map(option => (
-            <MenuItem key={option} value={option}>{option}</MenuItem>
+          {categories.map(option => (
+            <MenuItem key={option.name} value={option.value}>{option.name}</MenuItem>
           ))}
         </Select>
 </FormControl>
