@@ -18,7 +18,7 @@ export default function Submitform({setTasks, tasks}) {
         if(!values.task) {
             errors.task = 'Required';
         } else if (values.task.length < 4 || values.task.length > 15) {
-            errors.task = "Must be between 4 and 15 characters"
+            errors.task = "Must be 4 - 15 characters"
         }
         return errors
     },
@@ -37,7 +37,7 @@ export default function Submitform({setTasks, tasks}) {
   const options = [{value: true, name: 'Urgent'} , {value: false, name: 'Not Urgent'}];
 
   return (
-    <Box component='form' onSubmit={formik.handleSubmit} p={3} sx={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+    <Box component='form' onSubmit={formik.handleSubmit} sx={{mt: '20px', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
       <FormControl  sx={{ m: 1, minWidth: 120 }} size="small">
         <TextField
           error={formik.errors.task ? true : false}
