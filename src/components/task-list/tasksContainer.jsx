@@ -2,7 +2,7 @@
 
 import { Box, Container, Stack } from "@mui/material";
 import Task from "./task"
-import TasksInfo from "./TasksInfo"
+import TasksInfo from "./tasksInfo"
 import image from "../../assets/images/chopper.png"
 
 export default function TasksContainer({tasks, setTasks, filter}) {
