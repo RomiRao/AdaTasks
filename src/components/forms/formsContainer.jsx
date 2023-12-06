@@ -1,7 +1,7 @@
 //import React from 'react'
 
-import Submitform from "./Submitform";
-import Showform from "./Showform"
+import Submitform from "./submitform";
+import Showform from "./showform"
 import { Box } from "@mui/material";
 import image from "../../assets/images/todo-title.png"
 
