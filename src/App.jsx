@@ -6,7 +6,8 @@ import { useState } from 'react'
 
 function App() {
 
-  const [ tasks , setTasks] = useState(JSON.parse(localStorage.getItem('Tasks')) || [])
+  const [ tasks , setTasks] = useState(JSON.parse(localStorage.getItem('Tasks')) || [ 
+    {task: "Watch One Piece", category: true, complete: false, id: "OnePiece"}])
 
   const [filter, setFilter] = useState({
     state: 'All',
