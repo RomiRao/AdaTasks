@@ -1,34 +1,30 @@
+import './index.css'
+import { Container, Grid } from '@mui/material'
+import FormsContainer from './components/forms/FormsContainer'
+import TasksContainer from './components/task-list/TasksContainer'
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+
+  const [ tasks , setTasks] = useState(JSON.parse(localStorage.getItem('Tasks')) || [])
+
+  const [filter, setFilter] = useState({
+    state: 'All',
+    category: 'All',
+  });
+
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <Container >
+      <Grid container pt={{ xs: 0, sm: 7, md: 10 }} spacing={2} justifyContent="center">
+        <Grid item xs={12} md={6}>
+          <FormsContainer setTasks={setTasks} setFilter={setFilter} tasks={tasks} filter={filter}/>
+        </Grid>
+        <Grid item xs={12} md={6}>
+        <TasksContainer setTasks={setTasks} tasks={tasks} filter={filter}/>
+        </Grid>
+      </Grid>
+    </Container>
   )
 }
 
