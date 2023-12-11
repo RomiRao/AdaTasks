@@ -35,8 +35,8 @@ export default function Submitform({setTasks, tasks}) {
   const options = [{value: true, name: 'Urgent'} , {value: false, name: 'Not Urgent'}];
 
   return (
-    <Box component='form' onSubmit={formik.handleSubmit} sx={{m: '20px', display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: { xs: 'column', sm: 'row', md: 'row' }}}>
-      <FormControl  sx={{ m: 1 }} size="small">
+    <Box component='form' onSubmit={formik.handleSubmit} sx={{m: '20px', display: 'flex', justifyContent: 'center', alignItems: {xs: 'center', sm: 'start'}, flexDirection: { xs: 'column', sm: 'row', md: 'row' }}}>
+      <FormControl  sx={{ m: 1, width: {xs: '100%'} }} size="medium">
         <TextField
           error={formik.errors.task ? true : false}
           label="Enter your task"
@@ -47,7 +47,7 @@ export default function Submitform({setTasks, tasks}) {
           helperText={formik.errors.task ? formik.errors.task : null}
         />
       </FormControl>
-      <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
+      <FormControl sx={{ m: 1, width: {xs: '100%', sm: 250}  }} size="small">
         <InputLabel id='category'>Category</InputLabel>
         <Select
           labelId="category"
@@ -62,10 +62,10 @@ export default function Submitform({setTasks, tasks}) {
           ))}
         </Select>
       </FormControl>
-      <FormControl sx={{display: 'flex', justifyContent: 'center', alignItems: 'center', ml: '10px'}}>
-      <Fab size="small" color="primary" aria-label="add" type="submit">
-        <IoMdAdd />
-      </Fab>
+      <FormControl sx={{display: 'flex', justifyContent: 'center', alignItems: 'center', ml: {xs: 0, sm:'10px'}, mt: 1}}>
+        <Fab size="small" color="primary" aria-label="add" type="submit">
+          <IoMdAdd />
+        </Fab>
       </FormControl>
     </Box>
   )
