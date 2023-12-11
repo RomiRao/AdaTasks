@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { Box, InputLabel, MenuItem, Select, Typography, FormControl } from "@mui/material"
 
+
+const categories = [{value: 'All', name: 'All'}, {value: true, name: 'Urgent'} , {value: false, name: 'Not Urgent'}];
+const states = [{value: 'All', name: 'All'}, {value: true, name: 'Done'} , {value: false, name: 'Undone'}];
+
 export default function Showform({setFilter}) {
 
-  const categories = [{value: 'All', name: 'All'}, {value: true, name: 'Urgent'} , {value: false, name: 'Not Urgent'}];
-  const states = [{value: 'All', name: 'All'}, {value: true, name: 'Done'} , {value: false, name: 'Undone'}];
-  
   const [input, setInput] = useState({
     state: 'All',
     category: 'All',

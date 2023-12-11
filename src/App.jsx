@@ -1,8 +1,10 @@
 import './index.css'
-import { Container, Grid } from '@mui/material'
-import FormsContainer from './components/forms/formsContainer'
+import { Container, Grid, Box } from '@mui/material'
 import TasksContainer from './components/task-list/tasksContainer'
 import { useState } from 'react'
+import Submitform from "./components/forms/submitform";
+import Showform from "./components/forms/showform"
+import image from "./assets/images/todo-title.png"
 
 function App() {
 
@@ -19,10 +21,14 @@ function App() {
     <Container >
       <Grid container pt={{ xs: 0, sm: 7, md: 10 }} spacing={2} justifyContent="center">
         <Grid item xs={12} md={6}>
-          <FormsContainer setTasks={setTasks} setFilter={setFilter} tasks={tasks} filter={filter}/>
+          <Box sx={{display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', p: '50px'}}>
+            <img style={{maxWidth: '450px', width: '100%'}} src={image} alt="title todo ilustration"/>
+            <Submitform setTasks={setTasks} tasks={tasks}/>
+          <Showform setTasks={setTasks} tasks={tasks} setFilter={setFilter}/>
+          </Box>
         </Grid>
         <Grid item xs={12} md={6}>
-        <TasksContainer setTasks={setTasks} tasks={tasks} filter={filter}/>
+          <TasksContainer setTasks={setTasks} tasks={tasks} filter={filter}/>
         </Grid>
       </Grid>
     </Container>

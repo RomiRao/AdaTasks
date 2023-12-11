@@ -2,6 +2,7 @@ import { Box, TextField, Select, MenuItem, FormControl, InputLabel, Fab } from "
 import { useFormik } from 'formik';
 import { IoMdAdd } from "react-icons/io";
 
+const options = [{value: true, name: 'Urgent'} , {value: false, name: 'Not Urgent'}];
 
 export default function Submitform({setTasks, tasks}) {
 
@@ -30,9 +31,6 @@ export default function Submitform({setTasks, tasks}) {
 
     
 });
-
-
-  const options = [{value: true, name: 'Urgent'} , {value: false, name: 'Not Urgent'}];
 
   return (
     <Box component='form' onSubmit={formik.handleSubmit} sx={{m: '20px', display: 'flex', justifyContent: 'center', alignItems: {xs: 'center', sm: 'start'}, flexDirection: { xs: 'column', sm: 'row', md: 'row' }}}>
