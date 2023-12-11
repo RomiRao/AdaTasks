@@ -28,8 +28,8 @@ export default function Showform({setFilter}) {
     <Typography variant="h6">
         Filter by
       </Typography>
-    <Box sx={{display: 'flex',justifyContent: 'center', alignItems: 'center', flexDirection: { xs: 'column', sm: 'row', md: 'row' }}}>
-      <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
+    <Box sx={{display: 'flex',justifyContent: 'center', alignItems: 'center', flexDirection: { xs: 'column', sm: 'row', md: 'row' }, width: {xs: '100%'}}}>
+      <FormControl sx={{ m: 1, width: {xs: '100%', sm: 130}  }} size="small">
         <InputLabel id="state">State</InputLabel>
         <Select
           labelId="state"
@@ -44,7 +44,7 @@ export default function Showform({setFilter}) {
           ))}
         </Select>
 </FormControl>
-<FormControl sx={{ m: 1, minWidth: 120 }} size="small">
+<FormControl sx={{ m: 1, width: {xs: '100%', sm: 130}  }} size="small">
       <InputLabel id="category">Category</InputLabel>
         <Select
           labelId="category"
